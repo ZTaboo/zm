@@ -31,9 +31,9 @@ func zStatus(cmd *cobra.Command, args []string) {
 	}
 	//获取自身运行状态
 	if status := getSelfStatus(); status {
-		table.AddRow([]string{"ZM Web", "zm.exe", "1207", "Running"})
+		table.AddRow([]string{"ZM Web", "zm.exe", "1999", "Running"})
 	} else {
-		table.AddRow([]string{"ZM Web", "zm.exe", "1207", "Stop"})
+		table.AddRow([]string{"ZM Web", "zm.exe", "1999", "Stop"})
 	}
 	//获取其它任务运行状态
 	tasks, err := db.GetAllTask()
@@ -54,7 +54,7 @@ func zStatus(cmd *cobra.Command, args []string) {
 }
 
 func getSelfStatus() bool {
-	listen, err := net.Listen("tcp4", ":1207")
+	listen, err := net.Listen("tcp4", ":1999")
 	if err != nil {
 		return true
 	}

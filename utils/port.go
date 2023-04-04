@@ -8,28 +8,18 @@ import (
 func PortCheck(port string) bool {
 	listen, err := net.Listen("tcp", ":"+port)
 	if err != nil {
+		//fmt.Println("port:", port)
+		//fmt.Println("listen failed: ", err.Error())
 		return true
 	} else {
-		listener, err := net.Listen("tcp4", ":"+port)
-		if err != nil {
-			return true
-		} else {
-			defer func(listen net.Listener) {
-				err := listen.Close()
-				if err != nil {
-					log.Println("Listen close failed: ", err.Error())
-					return
-				}
-			}(listen)
-			defer func(listen net.Listener) {
-				err := listen.Close()
-				if err != nil {
-					log.Println("Listen close failed: ", err.Error())
-					return
-				}
-			}(listener)
-			return false
-		}
-
+		defer func(listen net.Listener) {
+			err := listen.Close()
+			if err != nil {
+				log.Println("Listen close failed: ", err.Error())
+				return
+			}
+		}(listen)
+		return false
 	}
+
 }

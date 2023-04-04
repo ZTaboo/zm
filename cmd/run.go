@@ -40,7 +40,7 @@ func BackRun(cmd *cobra.Command, args []string) {
 		switch args[0] {
 		case "web":
 			// 判断自身是否后台运行；如果没有则运行ZM Web
-			listen, err := net.Listen("tcp4", ":1207")
+			listen, err := net.Listen("tcp4", ":1999")
 			if err != nil {
 				log.Println("程序已运行：error:", err)
 				return
@@ -54,7 +54,7 @@ func BackRun(cmd *cobra.Command, args []string) {
 				log.Println("error:", err)
 				return
 			}
-			log.Println("启动成功\npid:", c.Process.Pid, "port:1207")
+			log.Println("启动成功\npid:", c.Process.Pid, "port:1999")
 			break
 		default:
 			// 查询任务是否存在
@@ -89,7 +89,7 @@ func Run(cmd *cobra.Command, args []string) {
 		case "web":
 			app := fiber.New()
 			router.Router(app)
-			log.Fatal(app.Listen(":1207"))
+			log.Fatal(app.Listen(":1999"))
 			break
 		default:
 			//查询任务是否存在
