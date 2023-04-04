@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
@@ -11,9 +9,7 @@ var stopCmd = &cobra.Command{
 	Use:   "stop",
 	Short: "停止ZM",
 	Long:  `停止ZM.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("stop called")
-	},
+	Run:   zStop,
 }
 
 func init() {
@@ -28,4 +24,8 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// stopCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
+
+func zStop(cmd *cobra.Command, args []string) {
+
 }
