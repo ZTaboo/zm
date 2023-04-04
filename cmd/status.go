@@ -20,21 +20,11 @@ var statusCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(statusCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// statusCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// statusCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // 输出状态信息
 func zStatus(cmd *cobra.Command, args []string) {
-	table, err := gotable.Create("name", "file", "port", "status")
+	table, err := gotable.Create("Name", "File", "Port", "Status")
 	if err != nil {
 		log.Println("Create table failed: ", err.Error())
 		return

@@ -3,8 +3,8 @@ package db
 import (
 	"ZM/db/dbModel"
 	"ZM/model"
+	"ZM/utils"
 	"log"
-	"net"
 	"strconv"
 )
 
@@ -30,19 +30,7 @@ func GetAllTask() ([]model.StatusModel, error) {
 		return nil, err
 	}
 	for _, item := range tasks {
-		var stat bool
-		listen, err := net.Listen("tcp4", ":"+strconv.Itoa(item.Port))
-		if err != nil {
-			stat = true
-		} else {
-			stat = false
-			err = listen.Close()
-			if err != nil {
-				log.Println("Listen close failed: ", err.Error())
-				return nil, err
-			}
-		}
-
+		stat := utils.PortCheck(strconv.Itoa(item.Port))
 		status = append(status, model.StatusModel{
 			Name:   item.Name,
 			Path:   item.Path,
@@ -59,5 +47,23 @@ func TaskExist(name string) (dbModel.Task, error) {
 	if err := Db.Where("name = ?", name).First(&task).Error; err != nil {
 		return dbModel.Task{}, err
 	}
+	// 判断端口是否占用
+
 	return task, nil
+}
+
+func UpdatePid(taskName string, pid int) {
+	if err := Db.Model(&dbModel.Task{}).Where("name = ?", taskName).Update("pid", pid).Error; err != nil {
+		log.Println(err)
+	}
+}
+
+func StopTask(name string) (int, error) {
+	//	查找pid
+	var task dbModel.Task
+	if err := Db.Where("name = ?", name).First(&task).Error; err != nil {
+		log.Println(err)
+		return 0, err
+	}
+	return task.Pid, nil
 }

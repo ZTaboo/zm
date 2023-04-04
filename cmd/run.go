@@ -30,15 +30,6 @@ var runBackCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(runCmd)
 	runCmd.AddCommand(runBackCmd)
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// runCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// runCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // BackRun 后台运行
@@ -67,7 +58,7 @@ func BackRun(cmd *cobra.Command, args []string) {
 			break
 		default:
 			// 查询任务是否存在
-			//查询任务是否存在
+			// 查询任务是否存在
 			if task, err := db.TaskExist(args[0]); err != nil {
 				fmt.Println("任务名称：", args[0], "不存在")
 			} else {
@@ -81,6 +72,7 @@ func BackRun(cmd *cobra.Command, args []string) {
 					log.Println("run error:", err)
 					return
 				}
+				db.UpdatePid(task.Name, c.Process.Pid)
 				fmt.Println("启动成功\npid:", c.Process.Pid, "port:", task.Port)
 			}
 		}
