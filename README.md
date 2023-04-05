@@ -4,6 +4,12 @@
 
 ## 使用文档
 
+### 安装
+
+```bash
+go install go install github.com/ZTaboo/ZM@latest
+```
+
 ### init
 
 > 初始化数据库和web的基本信息，首次使用需此命令
