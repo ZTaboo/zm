@@ -1,8 +1,8 @@
 package db
 
 import (
-	"ZM/db/dbModel"
 	"fmt"
+	"github.com/ZTaboo/ZM/db/dbModel"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
