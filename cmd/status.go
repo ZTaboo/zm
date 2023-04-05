@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"ZM/db"
 	"fmt"
+	"github.com/ZTaboo/ZM/db"
 	"github.com/liushuochen/gotable"
 	"github.com/spf13/cobra"
 	"log"

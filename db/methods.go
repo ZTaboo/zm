@@ -1,10 +1,10 @@
 package db
 
 import (
-	"ZM/db/dbModel"
-	"ZM/model"
-	"ZM/utils"
 	"errors"
+	"github.com/ZTaboo/ZM/db/dbModel"
+	"github.com/ZTaboo/ZM/model"
+	"github.com/ZTaboo/ZM/utils"
 	"log"
 	"strconv"
 )

@@ -4,8 +4,8 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"ZM/db"
 	"fmt"
+	"github.com/ZTaboo/ZM/db"
 	"log"
 	"os/exec"
 	"path/filepath"
