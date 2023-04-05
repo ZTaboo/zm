@@ -16,14 +16,14 @@ import (
 // runCmd represents the run command
 var runCmd = &cobra.Command{
 	Use:   "run",
-	Short: "运行ZM Web(未完成)",
-	Long:  `运行ZM Web(未完成).`,
+	Short: "运行任务(未完成)",
+	Long:  `运行任务；内置默认任务：web(未完成).`,
 	Run:   Run,
 }
 var runBackCmd = &cobra.Command{
 	Use:   "backend",
-	Short: "后台运行ZM Web(未完成)",
-	Long:  `后台运行ZM Web(未完成).`,
+	Short: "后台运行任务(未完成)",
+	Long:  `后台运行运行任务；内置默认任务：web(未完成).`,
 	Run:   BackRun,
 }
 
@@ -65,6 +65,7 @@ func BackRun(cmd *cobra.Command, args []string) {
 				fmt.Println("任务名称：", task.Name)
 				fmt.Println("任务路径：", task.Path)
 				c := exec.Command(task.Path)
+				c.Dir = task.ExecutableFiles
 				c.Stdout = nil
 				c.Stderr = nil
 				err = c.Start()
@@ -99,6 +100,7 @@ func Run(cmd *cobra.Command, args []string) {
 				fmt.Println("任务名称：", task.Name)
 				fmt.Println("任务路径：", task.Path)
 				c := exec.Command(task.Path)
+				c.Dir = task.ExecutableFiles
 				stdoutPipe, err := c.StdoutPipe()
 				if err != nil {
 					log.Println("error:", err)

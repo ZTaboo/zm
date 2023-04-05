@@ -48,7 +48,7 @@ func zStop(cmd *cobra.Command, args []string) {
 	default:
 		pid, err := db.StopTask(taskName)
 		if err != nil {
-			fmt.Println("任务不存在")
+			fmt.Println("任务不存在或已停止")
 			return
 		}
 		// 结束pid

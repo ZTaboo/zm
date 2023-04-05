@@ -5,6 +5,7 @@ import (
 	"net"
 )
 
+// PortCheck 验证端口是否占用
 func PortCheck(port string) bool {
 	listen, err := net.Listen("tcp", ":"+port)
 	if err != nil {

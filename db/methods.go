@@ -4,16 +4,18 @@ import (
 	"ZM/db/dbModel"
 	"ZM/model"
 	"ZM/utils"
+	"errors"
 	"log"
 	"strconv"
 )
 
 // Add 添加任务
-func Add(path string, name string, port int) error {
+func Add(path string, name string, port int, dir string) error {
 	if err := Db.Create(&dbModel.Task{
-		Name: name,
-		Path: path,
-		Port: port,
+		Name:            name,
+		Path:            path,
+		Port:            port,
+		ExecutableFiles: dir,
 	}).Error; err != nil {
 		log.Println(err)
 		return err
@@ -65,5 +67,18 @@ func StopTask(name string) (int, error) {
 		log.Println(err)
 		return 0, err
 	}
-	return task.Pid, nil
+	check := utils.PortCheck(strconv.Itoa(task.Port))
+	if check {
+		return task.Pid, nil
+	} else {
+		return 0, errors.New("端口未占用")
+	}
+}
+
+func DeleteTask(taskName string) error {
+	if err := Db.Model(&dbModel.Task{}).Where("name = ?", taskName).Delete(&dbModel.Task{}).Error; err != nil {
+		log.Println(err)
+		return err
+	}
+	return nil
 }

@@ -62,13 +62,15 @@ func zAdd(cmd *cobra.Command, args []string) {
 			log.Println("程序名称：", args[0], "不存在")
 			return
 		}
+		fmt.Println("path：", path)
 		abs, err := filepath.Abs(path)
 		if err != nil {
 			log.Println("error：", err)
 			return
 		}
-		fmt.Printf("程序路径：%s\n程序名称：%s\n任务端口：%d\n", abs, name, port)
-		if err := db.Add(abs, name, port); err != nil {
+		dir := filepath.Dir(abs)
+		fmt.Printf("程序路径：%s\n程序名称：%s\n任务端口：%d\ndir：%s\n", abs, name, port, dir)
+		if err := db.Add(abs, name, port, dir); err != nil {
 			fmt.Println("添加失败")
 			return
 		} else {
