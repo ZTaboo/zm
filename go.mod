@@ -1,4 +1,4 @@
-module ZM
+module github.com/ZTaboo/ZM
 
 go 1.20
 
