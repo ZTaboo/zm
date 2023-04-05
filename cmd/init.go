@@ -49,7 +49,6 @@ func zInit(cmd *cobra.Command, args []string) {
 		}
 		defer dbFile.Close()
 		log.Println("创建数据文件成功")
-	} else {
-		log.Println("数据文件已存在")
 	}
+	fmt.Println("初始化完成")
 }
