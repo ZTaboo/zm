@@ -4,8 +4,8 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package main
 
 import (
-	"github.com/ZTaboo/ZM/cmd"
-	_ "github.com/ZTaboo/ZM/db"
+	"github.com/ZTaboo/zm/cmd"
+	_ "github.com/ZTaboo/zm/db"
 )
 
 func main() {
