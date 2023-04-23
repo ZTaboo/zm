@@ -5,7 +5,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/ZTaboo/ZM/db"
+	"github.com/ZTaboo/zm/db"
 	"log"
 	"os/exec"
 	"path/filepath"

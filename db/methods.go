@@ -2,9 +2,9 @@ package db
 
 import (
 	"errors"
-	"github.com/ZTaboo/ZM/db/dbModel"
-	"github.com/ZTaboo/ZM/model"
-	"github.com/ZTaboo/ZM/utils"
+	"github.com/ZTaboo/zm/db/dbModel"
+	"github.com/ZTaboo/zm/model"
+	"github.com/ZTaboo/zm/utils"
 	"log"
 	"strconv"
 )

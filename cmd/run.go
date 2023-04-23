@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/ZTaboo/ZM/db"
-	"github.com/ZTaboo/ZM/router"
+	"github.com/ZTaboo/zm/db"
+	"github.com/ZTaboo/zm/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/cobra"
 	"io"

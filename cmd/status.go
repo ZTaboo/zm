@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/ZTaboo/ZM/db"
+	"github.com/ZTaboo/zm/db"
 	"github.com/liushuochen/gotable"
 	"github.com/spf13/cobra"
 	"log"
