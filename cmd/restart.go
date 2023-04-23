@@ -47,8 +47,7 @@ func zRestart(cmd *cobra.Command, args []string) {
 		fmt.Println("任务不存在：", err)
 		return
 	} else {
-		fmt.Println(res)
-		pid, err := db.StopTask(taskName)
+		pid, err := db.StopTask(name)
 		if err != nil {
 			fmt.Println("任务不存在或已停止")
 			return
