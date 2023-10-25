@@ -7,7 +7,7 @@
 ### 安装
 
 ```bash
-go install github.com/ZTaboo/ZM@latest
+go install github.com/ZTaboo/zm@latest
 ```
 
 ### init
